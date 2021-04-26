@@ -1,12 +1,3 @@
-/**
- * Copyright (c) 2020 Mongker.
- * All rights reserved.
- * @author Mongker 18/09/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
-
 import React from "react";
 import { Layout } from "antd";
 // import PropTypes from "prop-types";

@@ -1,21 +1,3 @@
-/**
- * Copyright 2020 present, Lê Văn Mong.
- * All rights reserved.
- * @author Mongker on 06/11/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
-
-/**
- * Copyright 2020 present, Lê Văn Mong.
- * All rights reserved.
- * @author MongLV on 25/09/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
-
 import {USER} from './actionTypes';
 import createActionNoAppID from 'src/base/createActionNoAppID';
 

@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2020 Mongker.
- * All rights reserved.
- * @author Mongker 15/09/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
 import React, {useState} from 'react';
 import {Helmet} from 'react-helmet';
 import {Layout, Drawer, Form, Input, InputNumber, Upload, Select, Button, Col, Row, message} from 'antd';
