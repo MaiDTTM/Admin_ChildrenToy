@@ -12,8 +12,8 @@ import {
     ShoppingOutlined,
     PictureOutlined,
     FileDoneOutlined,
-    LogoutOutlined,
-} from "@ant-design/icons";
+    LogoutOutlined, TransactionOutlined, UsergroupAddOutlined,
+} from '@ant-design/icons';
 import {Route, Link, useRouteMatch} from "react-router-dom";
 
 // util
@@ -38,12 +38,6 @@ function LogoAdmin() {
 function MenuAmin(props) {
     const {collapsed, setTitleHeader, onShowDrawer} = props;
     const match = useRouteMatch();
-
-    /**
-     * @description: Là một hàm callback gọi về hàm setTitleHeader để thay đổi title Header của web
-     * @author MongLV
-     * @param: event
-     */
     function handleClick(event) {
         setTitleHeader(event.key);
     }
@@ -68,20 +62,17 @@ function MenuAmin(props) {
                         Sản phẩm
                     </Link>
                 </Menu.Item>
-                {/*<Menu.Item key={KEY_MENU.TRANSACTION} icon={<FileDoneOutlined/>}>*/}
-                {/*    Đơn đặt hàng*/}
-                {/*</Menu.Item>*/}
-                {/*<Menu.Item key={KEY_MENU.ODER} icon={<FileDoneOutlined/>}>*/}
-                {/*    Hóa đơn bán*/}
-                {/*</Menu.Item>*/}
-                {/*<Menu.Item key={KEY_MENU.USER} icon={<TeamOutlined/>}>*/}
-                {/*    Khách hàng*/}
-                {/*</Menu.Item>*/}
-                <Menu.Item key={KEY_MENU.ADMIN} icon={<TeamOutlined/>}>
-                    <Link to={`${match.url}/admin`}>Nhân viên</Link>
+                <Menu.Item key={KEY_MENU.TRANSACTION} icon={<TransactionOutlined />}>
+                    <Link to={`${match.url}/transaction`}>Đơn hàng</Link>
                 </Menu.Item>
                 <Menu.Item key={KEY_MENU.SLIDER} icon={<PictureOutlined/>}>
                     <Link to={`${match.url}/slider`}>Slider</Link>
+                </Menu.Item>
+                <Menu.Item key={KEY_MENU.CUSTOMER} icon={<UsergroupAddOutlined />}>
+                    <Link to={`${match.url}/customer`}>Khách hàng</Link>
+                </Menu.Item>
+                <Menu.Item key={KEY_MENU.ADMIN} icon={<TeamOutlined/>}>
+                    <Link to={`${match.url}/admin`}>Nhân viên</Link>
                 </Menu.Item>
                 <Menu.Item icon={<SettingOutlined/>} key={KEY_MENU.SETTING_USER} onClick={() => onShowDrawer()}>Cài đặt tài khoản</Menu.Item>
                 <Menu.Item icon={<LogoutOutlined />} key={KEY_MENU.LOGOUT}>Đăng Xuất</Menu.Item>

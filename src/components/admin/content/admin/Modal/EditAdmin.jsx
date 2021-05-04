@@ -20,7 +20,7 @@ const tailLayout = {
     }
 };
 const {Option} = Select;
-const PassDefault = 'Nhom9@2020';
+const PassDefault = '12345@2021';
 const OptionPosition = {
     ADMIN: 'Quản lý',
     EXCEL: 'Kế Toán',

@@ -1,11 +1,3 @@
-/**
- * Copyright 2020 present, Lê Văn Mong.
- * All rights reserved.
- * @author Mongker on 04/11/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
 import axios from 'axios';
 import {URL_API} from '../config';
 import {message} from "antd";

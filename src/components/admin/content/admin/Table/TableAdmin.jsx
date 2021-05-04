@@ -1,12 +1,3 @@
-/**
- * Copyright 2020 present, Lê Văn Mong.
- * All rights reserved.
- * @author Mongker on 27/09/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
-
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {Button, Input, Row, Col, Image, Popconfirm, Spin, Empty, Avatar} from "antd";
@@ -113,29 +104,39 @@ function TableAdmin(props) {
         </div>);
     return (
         <div>
-            <Row style={{
-                position: 'absolute',
-                top: `${window.innerHeight * 0.025}px`,
-                left: '55%',
-                width: `${window.innerWidth * 0.42}px`
-            }}>
-                <Col span={12} offset={10}>
-                    <Search
-                        placeholder="Tìm kiếm theo tên"
-                        style={{width: "97%"}}
-                        enterButton
-                        onSearch={(value) => handleSearch(value)}
-                    />
-                </Col>
-                <Col span={2}>
-                    <Button
-                        type="primary"
-                        onClick={() => showModal('ADD')}
-                    >
-                        Thêm
-                    </Button>
-                </Col>
-            </Row>
+            <div style={{display:'flex',justifyContent:'flex-end',marginBottom:'10px'}}>
+                <Button
+                  type="primary"
+                  onClick={() => showModal('ADD')}
+                  style={{backgroundColor:'#e94f30',border:'#e94f30'}}
+                >
+                    Thêm người dùng
+                </Button>
+            </div>
+            {/*<Row style={{*/}
+            {/*    position: 'absolute',*/}
+            {/*    // top: `${window.innerHeight * 0.025}px`,*/}
+            {/*    left: '55%',*/}
+            {/*    width: `${window.innerWidth * 0.42}px`*/}
+            {/*}}>*/}
+            {/*    <Col span={12} offset={10}>*/}
+                    {/*<Search*/}
+                    {/*    placeholder="Tìm kiếm theo tên"*/}
+                    {/*    style={{width: "97%"}}*/}
+                    {/*    enterButton*/}
+                    {/*    onSearch={(value) => handleSearch(value)}*/}
+                    {/*/>*/}
+            {/*    </Col>*/}
+            {/*    <Col span={2}>*/}
+            {/*        <Button*/}
+            {/*            type="primary"*/}
+            {/*            onClick={() => showModal('ADD')}*/}
+            {/*        >*/}
+            {/*            Thêm*/}
+            {/*        </Button>*/}
+            {/*    </Col>*/}
+            {/*</Row>*/}
+
             {/* Table: Admin */}
             <Row className={"table-header"}>
                 <Col className={"table-row"} span={COL_SPAN.avatar}>

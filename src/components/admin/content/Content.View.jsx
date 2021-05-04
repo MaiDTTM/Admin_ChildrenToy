@@ -13,6 +13,8 @@ import TableProductContainer from 'src/components/admin/content/products/TablePr
 // util
 import {KEY_MENU} from 'src/components/util/keyMenu';
 import ContentHome from "src/components/admin/content/home/ContentHome/ContentHome";
+import TableTransaction from 'src/components/admin/content/transaction/Table/TableTransaction';
+import TableCustomer from 'src/components/admin/content/customer/Table/TableCustomer';
 
 // const
 let CheckRender;
@@ -22,8 +24,10 @@ function ContentAdmin(props) {
   useEffect(() => {}, [title]);
 
   switch (title) {
+    case  KEY_MENU.TRANSACTION:
+      CheckRender=<TableTransaction />
+      break;
     case KEY_MENU.SLIDER:
-      // CheckRender = <EditableTable />
       CheckRender = <TableSliderContainer list={list} />;
       break;
     case KEY_MENU.ADMIN:
@@ -32,6 +36,9 @@ function ContentAdmin(props) {
     case KEY_MENU.CATALOG:
       CheckRender = <CatalogContentContainer />;
       break;
+    case  KEY_MENU.CUSTOMER:
+      CheckRender=<TableCustomer />
+      break;
     case KEY_MENU.PRODUCT:
       CheckRender = <TableProductContainer />;
       break;
@@ -39,7 +46,6 @@ function ContentAdmin(props) {
       CheckRender = <ContentHome/>;
       break;
   }
-
   return <div className={"content"}>{CheckRender}</div>;
 }
 

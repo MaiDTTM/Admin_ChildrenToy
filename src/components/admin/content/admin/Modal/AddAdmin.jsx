@@ -24,7 +24,7 @@ const tailLayout = {
     }
 };
 const {Option} = Select;
-const PassDefault = 'Nhom9@2020';
+const PassDefault = '12345@2020';
 const imgDefault = require('../Table/styles/avatar.jpg');
 
 function AddAdmin(props) {
@@ -136,7 +136,7 @@ function AddAdmin(props) {
             footer={null}
             closeIcon
             // title={title}
-            title={"Thêm nhân viên mới"}
+            title={(<div style={{display:'flex',justifyContent:'center',color:'#0f43c8'}}>THÊM MỘT NGƯỜI DÙNG MỚI</div>)}
             centered
         >
             <Form

@@ -1,16 +1,13 @@
-/**
- * Copyright (c) 2020 Mongker.
- * All rights reserved.
- * @author Mongker 19/09/2020
- * @email: levanmong.dola.99@gmail.com
- * @student-code: 68DCHT20091
- * @university: UTT (Đại học Công Nghệ Giao Thông Vận Tải)
- */
-
 import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-import {Button, Input, Row, Col, Image, Popconfirm, Select, Spin} from "antd";
-import {EditTwoTone, DeleteTwoTone, QuestionCircleOutlined} from "@ant-design/icons";
+import { Button, Input, Row, Col, Image, Popconfirm, Select, Spin, Badge, Avatar, Popover } from 'antd';
+import {
+    EditTwoTone,
+    DeleteTwoTone,
+    QuestionCircleOutlined,
+    NotificationOutlined,
+    MailOutlined,
+} from '@ant-design/icons';
 
 // component
 import ModalAdd from "./ModalAdd";
@@ -18,6 +15,7 @@ import ModalEdit from "./ModalEdit";
 
 // util
 import {URL_API} from "src/api/config";
+import style from 'src/components/admin/header/styles.module.css';
 
 // const
 const {Search} = Input;
@@ -40,6 +38,19 @@ const styleCol = {
 const styleRow = {
     padding: "10px",
 };
+const content = (
+  <div>
+      <p>
+          <a style={{ color: 'black' }}>Thông tin cá nhân </a>
+      </p>
+      <p>
+          <a style={{ color: 'black' }}>Cài đặt</a>
+      </p>
+      <p>
+          <a style={{ color: 'black' }}>Đăng xuất </a>
+      </p>
+  </div>
+);
 
 function TableSlider(props) {
     const {list, deleteSlider, postSlider, putSlider} = props;
@@ -122,21 +133,38 @@ function TableSlider(props) {
             {/*<video width="320" height="240" autoPlay controls>*/}
             {/*    <source src={URL_API.local+'file/[WCCF8]-Em-Biết-Mà---HIEUTHUHAI-ft-KNG.mp4'} type={'video/mp4'} />*/}
             {/*</video>*/}
-            <Row style={{paddingBottom: "5px"}}>
-                <Col span={12} offset={10}>
-                    <Search
-                        placeholder="Tìm kiếm"
-                        style={{width: "97%"}}
-                        enterButton
-                        onSearch={(value) => handleSearch(value)}
-                    />
-                </Col>
-                <Col span={2}>
-                    <Button type="primary" onClick={() => showModalCancel('ADD')}>
-                        Thêm
-                    </Button>
-                </Col>
-            </Row>
+            <div style={{marginBottom:'10px',display:'flex',justifyContent:'flex-end'}}>
+                <Button type="primary" onClick={() => showModalCancel('ADD')} style={{backgroundColor:'#e75c1d',border:'#e75c1d'}}>
+                    Thêm slider
+                </Button>
+            </div>
+            {/*<Row style={{paddingBottom: "5px"}}>*/}
+                {/*<Col span={12} className={style.col_center}>*/}
+                {/*    <div className={style.input_filter}>*/}
+                {/*        <Search placeholder="input search text" onSearch={(value) => handleSearch(value)} enterButton />*/}
+                {/*    </div>*/}
+                {/*</Col>*/}
+                {/*<Col span={8}>*/}
+                {/*    <div className={style.header_logout}>*/}
+                {/*        <div>*/}
+                {/*            <Badge count={1}>*/}
+                {/*                <NotificationOutlined className={style.logo} />*/}
+                {/*            </Badge>*/}
+                {/*        </div>*/}
+                {/*        <div>*/}
+                {/*            <Badge dot>*/}
+                {/*                <MailOutlined className={style.logo} />*/}
+                {/*            </Badge>*/}
+                {/*        </div>*/}
+                {/*        <div className={style.account_admin}>*/}
+                {/*            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style={{marginRight:'10px'}}/>*/}
+                {/*            <Popover content={content}>*/}
+                {/*                <a style={{fontSize:'18px', color:'black'}}>Đào Thị Thanh Mai</a>*/}
+                {/*            </Popover>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</Col>*/}
+            {/*</Row>*/}
 
             {/* Table: Slider */}
             <Row className={"table-header"}>

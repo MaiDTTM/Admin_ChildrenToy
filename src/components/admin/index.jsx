@@ -20,7 +20,8 @@ import {KEY_MENU} from "src/components/util/keyMenu";
 import './styles/index.css';
 import {URL_API} from "src/api/config";
 import getIdRandom from "src/components/util/getIdRandom";
-import AddAdmin from "src/components/admin/content/admin/Modal/AddAdmin";
+import TransactionView from 'src/components/admin/content/transaction/TransactionView';
+import CustomerView from 'src/components/admin/content/customer/CustomerView';
 
 // const
 const {Sider} = Layout;
@@ -310,6 +311,14 @@ function Admin(props) {
                 <Route
                     path={`${match.url}/product`}
                     render={() => <CatalogView titleHeader={titleHeader}/>}
+                />
+                <Route
+                  path={`${match.url}/transaction`}
+                  render={() => <TransactionView titleHeader={titleHeader}/>}
+                />
+                <Route
+                  path={`${match.url}/customer`}
+                  render={() => <CustomerView titleHeader={titleHeader}/>}
                 />
             </Switch>
         </Layout>

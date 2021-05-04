@@ -1,0 +1,32 @@
+.input_filter{
+ margin-top: 15px;
+    width: 400px;
+}
+.col_center{
+    display: flex;
+    justify-content: center;
+}
+.header_logo{
+    width: 14.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    font-size: 20px;
+    margin-left: 20px;
+    width: 50px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.header_logout{
+    display: flex;
+    justify-content: center;
+}
+.account_admin{
+    margin-left: 125px;
+}
+.account_admin:hover{
+    cursor: pointer;
+}

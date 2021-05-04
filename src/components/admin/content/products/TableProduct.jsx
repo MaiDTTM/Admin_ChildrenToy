@@ -217,7 +217,7 @@ function TableProduct(props) {
             textAlign: 'center',
             alignItems: 'center',
         }}>
-            <h2>Thêm sản phẩm vào thư mục</h2>
+            <h3>THÊM SẢN PHẨM THEO DANH MỤC</h3>
         </div>
     );
     const TitleEdit = (
@@ -225,7 +225,7 @@ function TableProduct(props) {
             textAlign: 'center',
             alignItems: 'center',
         }}>
-            <h2>Chỉnh sửa sản phẩm</h2>
+            <h3>CHỈNH SỬA THÔNG TIN CỦA SẢN PHẨM</h3>
         </div>
     );
     const Setting = ({id}) => {
@@ -262,36 +262,55 @@ function TableProduct(props) {
 
     return (
         <div>
-            <Row style={{
-                position: !type ? 'absolute' : 'fixed',
-                top: `${window.innerHeight * 0.025}px`,
-                left: '55%',
-                width: `${window.innerWidth * 0.42}px`
-            }}>
-                <Col span={12} offset={10}>
-                    <Search
-                        placeholder="Tìm kiếm"
-                        style={{width: "97%"}}
-                        enterButton
-                        onSearch={(value) => handleSearch(value)}
-                    />
-                </Col>
-                <Col span={2}>
-                    <Button
-                        type="primary"
-                        onClick={showDrawer}
-                    >
-                        Thêm
-                    </Button>
-                </Col>
-            </Row>
-            {/* Table: Product */}
+            <div style={{margin:'10px 0',display:'flex',justifyContent:'flex-end'}}>
+                <Button
+                  type="primary"
+                  onClick={showDrawer} style={{backgroundColor:'#ec5223',border:'#d7552d'}}
+                >
+                    Thêm sản phẩm
+                </Button>
+            </div>
+            {/*<Row style={{margin:'10px 0'}}>*/}
+            {/*    <Col span={21}/>*/}
+            {/*    <Col span={3}>*/}
+            {/*        <Button*/}
+            {/*          type="primary"*/}
+            {/*          onClick={showDrawer} style={{backgroundColor:'#ec5223',border:'#d7552d'}}*/}
+            {/*        >*/}
+            {/*            Thêm sản phẩm*/}
+            {/*        </Button>*/}
+            {/*    </Col>*/}
+            {/*</Row>*/}
+            {/*<Row style={{*/}
+            {/*    position: !type ? 'absolute' : 'fixed',*/}
+            {/*    top: `${window.innerHeight * 0.025}px`,*/}
+            {/*    left: '55%',*/}
+            {/*    width: `${window.innerWidth * 0.42}px`*/}
+            {/*}}>*/}
+            {/*    <Col span={12} offset={10}>*/}
+            {/*        <Search*/}
+            {/*            placeholder="Tìm kiếm"*/}
+            {/*            style={{width: "97%"}}*/}
+            {/*            enterButton*/}
+            {/*            onSearch={(value) => handleSearch(value)}*/}
+            {/*        />*/}
+            {/*    </Col>*/}
+            {/*    <Col span={2}>*/}
+            {/*        <Button*/}
+            {/*            type="primary"*/}
+            {/*            onClick={showDrawer}*/}
+            {/*        >*/}
+            {/*            Thêm*/}
+            {/*        </Button>*/}
+            {/*    </Col>*/}
+            {/*</Row>*/}
+            {/*Table: Product*/}
             <Row className={'table-header-catalog'}>
                 <Col className={'table-row-catalog'} span={COL_SPAN.img}>
                     Hình ảnh
                 </Col>
                 <Col className={'table-row-catalog'} span={COL_SPAN.name}>
-                    Tên sách
+                    Tên sản phẩm
                 </Col>
                 <Col className={'table-row-catalog'} span={COL_SPAN.price}>
                     Giá tiền
@@ -303,7 +322,7 @@ function TableProduct(props) {
                     Đã bán
                 </Col>
                 <Col className={'table-row-catalog'} span={COL_SPAN.vote_user}>
-                    danh mục
+                    Danh mục
                 </Col>
                 <Col className={'table-row-catalog'} span={COL_SPAN.event}>
                     Hành động
@@ -316,7 +335,7 @@ function TableProduct(props) {
                             <Col className={'table-row-catalog'} span={COL_SPAN.img}>
                                 <Image
                                     width={60}
-                                    height={80}
+                                    height={60}
                                     // src={list[item].image_link[0]}
                                     src={URL_API.local + 'file/' + list[item].image_link[0]}
                                     fallback={'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'}
@@ -363,11 +382,11 @@ function TableProduct(props) {
                 <Form {...layout} form={form1} name="nest-messages" onFinish={onFinish}>
                     <Form.Item
                         name={'name'}
-                        label="Tên: "
+                        label="Tên sản phẩm: "
                         rules={[
                             {
                                 required: true,
-                                message: 'Tên sách là bắt buộc',
+                                message: 'Tên sản phẩm là bắt buộc!',
                             },
                         ]}
                     >
@@ -380,7 +399,7 @@ function TableProduct(props) {
                             {
                                 type: 'number',
                                 required: true,
-                                message: 'Giá tiền là bắt buộc',
+                                message: 'Giá tiền là bắt buộc!',
                                 min: 0,
                                 max: 100000000,
                             },
@@ -437,7 +456,7 @@ function TableProduct(props) {
                     </Form.Item>
                     <Form.Item
                         name={'catalog_id'}
-                        label={'Thư mục:'}
+                        label={'Danh mục:'}
                         rules={[
                             {
                                 required: true,
@@ -482,7 +501,7 @@ function TableProduct(props) {
                 <Form {...layout} form={form2} name="nest-messages" onFinish={onFinishEdit}>
                     <Form.Item
                         name={'name'}
-                        label="Tên sách: "
+                        label="Tên sản phẩm: "
                         rules={[
                             {
                                 required: true,
@@ -520,7 +539,7 @@ function TableProduct(props) {
                         rules={[
                             {
                                 required: true,
-                                message: 'Số lượng là bắt buộc phải có',
+                                message: 'Số lượng là bắt buộc phải có!',
                                 type: 'number',
                                 min: 0,
                                 max: 100000000,

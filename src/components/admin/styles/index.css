@@ -10,7 +10,7 @@
 }
 
 .site-layout .site-layout-background {
-    background: #85bfff;
+    background: #ace5ec;
 }
 
 [data-theme="dark"] .site-layout .site-layout-background {
@@ -29,7 +29,7 @@
     border: 0.5px solid #d8d9e1
 }
 .table-header {
-    background-color: #85bfff;
+    background-color: #33c6d6;
     padding: 10px;
     font-weight: bold;
     text-align: center;
