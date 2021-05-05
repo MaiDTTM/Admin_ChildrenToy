@@ -32,10 +32,10 @@ const heightWindow = (window.innerHeight - window.innerHeight * 0.5).toString() 
 const { Search } = Input;
 const layout = {
 	labelCol: {
-		span: 5,
+		span: 6,
 	},
 	wrapperCol: {
-		span: 19,
+		span: 18,
 	},
 };
 
@@ -53,6 +53,7 @@ function TreeCatalog(props) {
 	const { list, deleteId, post, put } = props;
 	const [form] = Form.useForm();
 	const [formEdit] = Form.useForm();
+	const [formAddItem] = Form.useForm();
 	const [linkFile, setLinkFile] = React.useState('');
 	const [fileList, setFileList] = React.useState([]);
 	const [previewVisible, setPreviewVisible] = React.useState(false);
@@ -60,8 +61,10 @@ function TreeCatalog(props) {
 	const [previewTitle, setPreviewTitle] = React.useState('');
 	const [listArray, setListArray] = React.useState(Object.keys(list));
 	const [visible, setVisible] = React.useState(false);
+	const [visible1, setVisible1] = React.useState(false);
 	const [visibleEdit, setVisibleEdit] = React.useState(false);
 	const [idPut, setIdPut] = React.useState('');
+	const [idAddItem,setIdAddItem] = React.useState('');
 	// Note MongLV: để xét giá trị cho form
 	// form.setFieldsValue({
 	//     name: '',
@@ -88,7 +91,11 @@ function TreeCatalog(props) {
 			description: list[id].description,
 		});
 	};
-
+  const showModalAdd = (id) =>{
+		setVisible1(true);
+		setIdAddItem(id);
+   console.log('id', id); // MongLV log fix bug
+	}
 	const onReset = () => {
 		form.resetFields();
 		formEdit.resetFields();
@@ -96,13 +103,17 @@ function TreeCatalog(props) {
 		setVisibleEdit(false);
 		setIdPut('');
 	};
-
+  const onResetAddItem =()=> {
+		setVisible1(false);
+	}
 	const onFinish = (values) => {
-		console.log('valuse', values); // MongLV log fix bug
 		post(values);
 		onReset();
 	};
+	const onFinishAddItem = (values)=>{
+		console.log('values', values); // MongLV log fix bug
 
+	}
 	const onFinishEdit = (values) => {
 		put(idPut, values);
 		onReset();
@@ -116,11 +127,13 @@ function TreeCatalog(props) {
 
 	// JSX
 	function TitleAdd() {
-		return <div className={'modalAdd'}>Thêm danh mục </div>;
+		return <div className={'modalAdd'}>THÊM DANH MỤC</div>;
 	}
-
+	function TitleAddItem() {
+		return <div className={'modalAdd'}>THÊM DANH MỤC</div>;
+	}
 	function TitleEdit() {
-		return <div className={'modalAdd'}>Sửa danh mục </div>;
+		return <div className={'modalAdd'}>SỬA DANH MỤC</div>;
 	}
 
 	const Content = ({ id }) => {
@@ -130,7 +143,7 @@ function TreeCatalog(props) {
 					<PlusOutlined
 						className={'addTwoTone'}
 						twoToneColor={'cyan'}
-						onClick={() => showModalEdit(id)}
+						onClick={() => showModalAdd(id)}
 					/>
 				</Col>
 				&nbsp; &nbsp; &nbsp;
@@ -181,7 +194,6 @@ function TreeCatalog(props) {
 		multiple: true,
 		// onChange: (info) => onChange(info),
 	};
-	console.log('UpFile', UpFile); // MongLV log fix bug
 	const handleCancel = () => setPreviewVisible(false);
 	return (
 		<div
@@ -276,6 +288,7 @@ function TreeCatalog(props) {
 					</Col>
 				</Row>
 			)}
+			{/*Modal add*/}
 			<Modal title={<TitleAdd />} visible={visible} footer={null} closeIcon={true}>
 				<Form {...layout} form={form} onFinish={onFinish}>
 					<Form.Item
@@ -293,10 +306,7 @@ function TreeCatalog(props) {
 					<Form.Item name={'description'} label="Miêu tả">
 						<Input.TextArea />
 					</Form.Item>
-					<div>
-						<div>Icon :</div>
-						<div>
-							<Form.Item name={'icon'}>
+							<Form.Item name={'icon'} label="Icon :">
 								<Upload {...UpFile} listType="picture-card" fileList={fileList}>
 									{linkFile.length <= 0 ? (
 										<img
@@ -315,7 +325,7 @@ function TreeCatalog(props) {
 									<img alt="example" style={{ width: '100%' }} src={previewImage} />
 								</Modal>
 							</Form.Item>
-							<div>
+							<div style={{marginLeft:120,marginBottom:20}}>
 								Dung lượng file tối đa 2 MB
 								<br />
 								Định dạng:.JPEG, .PNG
@@ -323,8 +333,6 @@ function TreeCatalog(props) {
 							<div style={{ color: '#f65353', display: 'none' }} id="chu_y">
 								* Click vào ảnh để thay đổi avatar
 							</div>
-						</div>
-					</div>
 					<Form.Item {...tailLayout}>
 						<Row
 							style={{
@@ -343,6 +351,70 @@ function TreeCatalog(props) {
 					</Form.Item>
 				</Form>
 			</Modal>
+			{/*Modal add item*/}
+			<Modal title={<TitleAddItem />} visible={visible1} footer={null} closeIcon={true}>
+				<Form {...layout} form={formAddItem} onFinish={onFinishAddItem}>
+					<Form.Item
+						name={'name'}
+						label="Tên danh mục"
+						rules={[
+							{
+								required: true,
+								message: 'Không được để trống tên',
+							},
+						]}
+					>
+						<Input />
+					</Form.Item>
+					<Form.Item name={'description'} label="Miêu tả">
+						<Input.TextArea />
+					</Form.Item>
+					<Form.Item name={'icon'} label="Icon :">
+						<Upload {...UpFile} listType="picture-card" fileList={fileList}>
+							{linkFile.length <= 0 ? (
+								<img
+									alt="example"
+									src={linkFileView}
+									style={{ width: 50, height: 50 }}
+								/>
+							) : null}
+						</Upload>
+						<Modal
+							visible={previewVisible}
+							title={previewTitle}
+							footer={null}
+							onCancel={handleCancel}
+						>
+							<img alt="example" style={{ width: '100%' }} src={previewImage} />
+						</Modal>
+					</Form.Item>
+					<div style={{marginLeft:120,marginBottom:20}}>
+						Dung lượng file tối đa 2 MB
+						<br />
+						Định dạng:.JPEG, .PNG
+					</div>
+					<div style={{ color: '#f65353', display: 'none' }} id="chu_y">
+						* Click vào ảnh để thay đổi avatar
+					</div>
+					<Form.Item {...tailLayout}>
+						<Row
+							style={{
+								alignItems: 'center',
+							}}
+						>
+							<Col style={{ paddingRight: '20px' }}>
+								<Button type="primary" htmlType="submit">
+									Thêm
+								</Button>
+							</Col>
+							<Col style={{ paddingLeft: '20px' }}>
+								<Button onClick={onResetAddItem}>Đóng</Button>
+							</Col>
+						</Row>
+					</Form.Item>
+				</Form>
+			</Modal>
+			{/*Modal edit*/}
 			<Modal title={<TitleEdit />} visible={visibleEdit} footer={null} closeIcon={true}>
 				<Form {...layout} form={formEdit} onFinish={onFinishEdit}>
 					<Form.Item

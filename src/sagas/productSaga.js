@@ -35,7 +35,6 @@ export function * watcherGetListIDCatalog() {
        const takeAction = yield take('RUN_ListIDCatalog');
        const {id} = takeAction;
        const product = yield getListProduct_IDCatalog(id || localStorage.getItem('id_click_catalog'));
-       console.log(localStorage.getItem('id_click_catalog'));
        yield put({type: PRODUCT.GET_LIST_ID_CATALOG, product});
    }
 }

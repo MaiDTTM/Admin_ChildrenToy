@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { BASE_URL } from 'src/util/TypeApi';
 const axiosClient = axios.create({
-	baseURL: 'http://localhost:1999/api',
+	baseURL: BASE_URL,
 	headers: { 'X-Custom-Header': 'foobar', 'Content-Type': 'application/json' },
 });
 //interceptors

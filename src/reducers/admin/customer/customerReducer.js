@@ -7,8 +7,14 @@ const Customer = (state = {}, action) => {
 		case CUSTOMER.GET_LIST_ID:
 			return action.product;
 		case CUSTOMER.GET_LIST:
-			console.log('action.payload', action.payload); // MongLV log fix bug
 			return action.payload;
+		case CUSTOMER.POST:
+			return action.payload.data;
+		case CUSTOMER.DELETE:
+			const id = action.payload;
+			const filterAll = Object.values(state);
+			const newState = filterAll.filter((item) => item._id !== id);
+			return newState;
 		default:
 			return state;
 	}
